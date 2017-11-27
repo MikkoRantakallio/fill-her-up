@@ -1,0 +1,10 @@
+<div fxLayout="row" fxLayoutAlign="center">
+<mat-nav-list>
+
+    <div *ngFor="let contact of fillings" (click)="onFillingSelect(contact)">
+      <ca-contact-list-item [filling]="contact">
+      </ca-contact-list-item>
+    </div>
+
+</mat-nav-list>
+</div>

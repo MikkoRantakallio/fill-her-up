@@ -1,0 +1,22 @@
+.loginCard{
+  width: 300px;
+  height: 280px;
+  margin: auto;
+  margin-top: 8px;
+  font-family: "Palatino Linotype";
+}
+.cardTitle{
+  font-size: 26px;
+}
+.editField{
+  font-family: "Palatino Linotype";
+  font-size: 18px;
+}
+.addButton{
+  float: left;
+  margin-right: 8px;
+}
+.backButton{
+  margin-right: 5px;
+}
+

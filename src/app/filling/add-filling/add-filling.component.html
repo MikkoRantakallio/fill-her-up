@@ -1,0 +1,52 @@
+<mat-card class="contactCard">
+
+  <mat-card-header>
+    <mat-card-title class="cardTitle">Contact information</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content class="cardContent">
+
+    <div>
+
+      <mat-form-field class="editField">
+        <input matInput placeholder="First name" value="" [(ngModel)]="firstName">
+      </mat-form-field>
+
+      <mat-form-field class="editField">
+        <input matInput placeholder="Last name" value="" [(ngModel)]="lastName">
+      </mat-form-field>
+
+      <mat-form-field class="editField">
+        <input matInput placeholder="Phone number" value="" [(ngModel)]="phoneNumber">
+      </mat-form-field>
+
+      <mat-form-field class="editField">
+        <input matInput placeholder="Address" value="" (ngModelChange)="refreshMapFrame()" [(ngModel)]="streetAddress">
+      </mat-form-field>
+
+      <mat-form-field class="editField">
+        <input matInput placeholder="City" value="" (ngModelChange)="refreshMapFrame()" [(ngModel)]="city">
+      </mat-form-field>
+
+      <iframe #map class="googleMap" frameborder="0"></iframe>
+
+
+      <div>
+        <button mat-fab class="addButton" (click)="insertContact()">
+          <mat-icon aria-label="Add button">add</mat-icon>
+        </button>
+
+        <button mat-fab class="backButton" (click)="showContacts()">
+          <mat-icon aria-label="Back button">arrow_back</mat-icon>
+        </button>
+
+        <button mat-fab class="deleteButton" (click)="deleteContact(contact)">
+          <mat-icon aria-label="Delete button">delete</mat-icon>
+        </button>
+      </div>
+
+    </div>
+  </mat-card-content>
+
+</mat-card>
+

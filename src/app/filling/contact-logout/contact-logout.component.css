@@ -1,0 +1,10 @@
+.logoutCard{
+  width: 300px;
+  height: 280px;
+  margin: auto;
+  margin-top: 8px;
+  font-family: "Palatino Linotype";
+}
+.cardTitle{
+  font-size: 26px;
+}

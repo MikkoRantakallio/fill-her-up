@@ -1,0 +1,19 @@
+<mat-card class="ca-contact-list-card">
+  <div fxLayout="row">
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <mat-icon aria-label="Icon" class="ca-contact-list-card-icon">contacts</mat-icon>
+    </div>
+    <div fxLayout="column">
+      <div fxLayout="row" class="ca-contact-list-card-title">
+        {{filling.lastName}}, {{filling.firstName}}
+      </div>
+      <div fxLayout="row">
+        {{filling | contactAddress}}
+      </div>
+      <div fxLayout="row">
+        {{filling.phoneNumber}}
+      </div>
+    </div>
+  </div>
+</mat-card>
+
