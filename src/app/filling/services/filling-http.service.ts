@@ -24,8 +24,11 @@ export class FillingHttpService {
     });
   }
 
-  get(): Observable<Filling[]> {
-    return this.http.get(this.url).map((response) => {
+  get(id:string): Observable<Filling[]> {
+
+    var getUrl = this.url + 'get_fillings&id=' + id;
+
+    return this.http.get(getUrl).map((response) => {
       return response as Filling[];
     });
   }

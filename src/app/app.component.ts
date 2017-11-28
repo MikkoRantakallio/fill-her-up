@@ -65,6 +65,6 @@ export class AppComponent {
     console.log(this.selectedCar);
     console.log(this.selectedPeriod);
 
-    this.router.navigate(['fillings', this.selectedCar]);
+    this.router.navigate(['fillings', this.selectedCar, this.selectedPeriod]);
   }
 }

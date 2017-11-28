@@ -11,6 +11,7 @@ import {FillingService} from '../services/filling.service';
 export class FillingListComponent implements OnInit {
 
   license: string;
+  period: string;
 
   fillings: Filling[];
   filling: Filling;
@@ -25,11 +26,15 @@ export class FillingListComponent implements OnInit {
 
     this.license = this.route.snapshot.paramMap.get('id');
     console.log(this.license);
+    this.period = this.route.snapshot.paramMap.get('period');
+    console.log(this.period);
 
-    /*
-        this.fillingService.findFillings().subscribe((fillings: Filling[]) => {
-          this.fillings = fillings;
-        });*/
+    if (this.license != null && this.period != null) {
+
+      this.fillingService.findFillings(this.license).subscribe((fillings: Filling[]) => {
+        this.fillings = fillings;
+      });
+    }
   }
 
   onFillingSelect(filling: Filling) {

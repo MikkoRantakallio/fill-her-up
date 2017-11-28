@@ -9,8 +9,8 @@ export class FillingService {
   constructor(private fillingHttpService: FillingHttpService) {
   }
 
-  findFillings(): Observable<Filling[]> {
-    return this.fillingHttpService.get();
+  findFillings(id: string): Observable<Filling[]> {
+    return this.fillingHttpService.get(id);
   }
 
   findContactById(id: number): Observable<Filling> {

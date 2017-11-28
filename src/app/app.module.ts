@@ -22,7 +22,7 @@ import {HttpClientModule} from '@angular/common/http';
 const routes: Routes = [
   {
     path: '',
-    component: FillingListComponent
+    component: AppComponent
   },
   {
     path: 'add-filling',
@@ -33,12 +33,12 @@ const routes: Routes = [
     component: FillingListComponent
   },
   {
-    path: 'fillings',
+    path: 'fillings/:id/:period',
     component: FillingListComponent
   },
-/*  {
-    path: 'fillings/:license',
-    component: AddContactComponent
+  /*{
+    path: 'fillings',
+    component: AppComponent
   },*/
   {
     path: 'logout',
