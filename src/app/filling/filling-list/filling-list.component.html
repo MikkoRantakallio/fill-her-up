@@ -1,8 +1,8 @@
 <div fxLayout="row" fxLayoutAlign="center">
 <mat-nav-list>
 
-    <div *ngFor="let contact of fillings" (click)="onFillingSelect(contact)">
-      <ca-contact-list-item [filling]="contact">
+    <div *ngFor="let filling of fillings" (click)="onFillingSelect(filling)">
+      <ca-contact-list-item [filling]="filling">
       </ca-contact-list-item>
     </div>
 

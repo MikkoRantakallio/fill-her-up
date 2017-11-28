@@ -1,49 +1,59 @@
+<mat-toolbar color="primary">
 
-  <mat-toolbar color="primary">
+  <button mat-icon-button color="white" [routerLink]="['']">
+    <mat-icon>menu</mat-icon>
+  </button>
 
-    <button mat-icon-button color="white" [routerLink]="['']">
-      <mat-icon>menu</mat-icon>
-    </button>
+  Fill Her Up
 
-    Fill Her Up
-
-  </mat-toolbar>
-
-
-  <mat-card class="header-card">
-    <div fxLayout="row">
-
-      <div fxLayout="column" fxLayoutAlign="center center">
-        <mat-icon aria-label="Icon" class="ca-contact-list-card-icon">contacts</mat-icon>
-      </div>
-
-        <div fxLayout="row" class="ca-contact-list-card-title">
+</mat-toolbar>
 
 
-          <mat-form-field  class="carSelect">
+<mat-card class="header-card">
+  <div fxLayout="row">
 
-            <mat-select placeholder="Select car"  [(ngModel)]="selectedCar">
-              <mat-option *ngFor="let car of cars" [value]="car.license">
-                {{ car.descr }}
-              </mat-option>
-            </mat-select>
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <mat-icon aria-label="Icon" class="ca-contact-list-card-icon">contacts</mat-icon>
+    </div>
 
-          </mat-form-field>
-
-          <button mat-fab class="addButton" (click)="getFillings()">
-            <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
-          </button>
+    <div fxLayout="row" class="ca-contact-list-card-title">
 
 
+      <mat-form-field class="carSelect">
 
-        </div>
+        <mat-select placeholder="Select car" [(ngModel)]="selectedCar">
+          <mat-option *ngFor="let car of cars" [value]="car.license">
+            {{ car.descr }}
+          </mat-option>
+        </mat-select>
+
+
+      </mat-form-field>
+
+      <mat-form-field class="periodSelect">
+
+        <mat-select placeholder="Select period" [(ngModel)]="selectedPeriod">
+          <mat-option *ngFor="let period of periods" [value]="period.value">
+            {{ period.text }}
+          </mat-option>
+        </mat-select>
+
+      </mat-form-field>
+
+
+      <button mat-fab class="addButton" (click)="getFillings()">
+        <mat-icon aria-label="Example icon-button with a heart icon">search</mat-icon>
+      </button>
+
 
     </div>
-  </mat-card>
 
-
-  <div>
-    <router-outlet></router-outlet>
   </div>
+</mat-card>
+
+
+<div>
+  <router-outlet></router-outlet>
+</div>
 
 

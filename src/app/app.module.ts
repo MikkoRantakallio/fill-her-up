@@ -29,13 +29,17 @@ const routes: Routes = [
     component: AddContactComponent
   },
   {
-    path: 'fillings',
+    path: 'fillings/:id',
     component: FillingListComponent
   },
   {
-    path: 'fillings/:id',
-    component: AddContactComponent
+    path: 'fillings',
+    component: FillingListComponent
   },
+/*  {
+    path: 'fillings/:license',
+    component: AddContactComponent
+  },*/
   {
     path: 'logout',
     component: ContactLogoutComponent

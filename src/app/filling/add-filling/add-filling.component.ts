@@ -13,7 +13,7 @@ import {FillingService} from '../services/filling.service';
 export class AddContactComponent implements OnInit {
 
 
-  id: number;
+  license: number;
   firstName: string;
   lastName: string;
   phoneNumber: string;
@@ -31,11 +31,11 @@ export class AddContactComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.id = Number(this.route.snapshot.paramMap.get('id'));
-    console.log(this.id);
+    this.license = Number(this.route.snapshot.paramMap.get(''));
+    console.log(this.license);
 
-    if (this.id > 0) {
-      this.contactService.findContactById(this.id).subscribe((contact: Filling) => {
+    if (this.license > 0) {
+      this.contactService.findContactById(this.license).subscribe((contact: Filling) => {
         this.contact = contact;
 
         this.firstName = this.contact.firstName;
@@ -66,9 +66,9 @@ export class AddContactComponent implements OnInit {
     const mapFrame = this.mapFrameElement.nativeElement;
 
     if (this.firstName.length > 0 && this.lastName.length > 0) {
-      let contact: Filling = new Filling(this.id, this.firstName, this.lastName, this.phoneNumber, this.streetAddress, this.city);
+      let contact: Filling = new Filling(this.license, this.firstName, this.lastName, this.phoneNumber, this.streetAddress, this.city);
 
-      if (this.id === 0) {
+      if (this.license === 0) {
         this.contactService.insertContact(contact);
         this.firstName = '';
         this.lastName = '';
@@ -95,7 +95,7 @@ export class AddContactComponent implements OnInit {
     this.phoneNumber = '';
     this.streetAddress = '';
     this.city = '';
-    this.id = 0;
+    this.license = 0;
     mapFrame.src = 'https://maps.google.com/maps?q=lappeenranta&output=embed';
   }
 
