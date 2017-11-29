@@ -1,17 +1,16 @@
 <mat-card class="ca-contact-list-card">
   <div fxLayout="row">
     <div fxLayout="column" fxLayoutAlign="center center">
-      <mat-icon aria-label="Icon" class="ca-contact-list-card-icon">contacts</mat-icon>
+      <mat-icon aria-label="Icon" class="ca-contact-list-card-icon">local_gas_station</mat-icon>
     </div>
     <div fxLayout="column">
       <div fxLayout="row" class="ca-contact-list-card-title">
-        {{filling.lastName}}, {{filling.firstName}}
+        Date: {{filling.date}}
       </div>
       <div fxLayout="row">
-        {{filling | contactAddress}}
+        Amount: {{filling.amount}} Price: {{filling.price}} Mileage: {{filling.mileage}}
       </div>
       <div fxLayout="row">
-        {{filling.phoneNumber}}
       </div>
     </div>
   </div>

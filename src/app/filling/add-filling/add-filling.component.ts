@@ -38,11 +38,11 @@ export class AddContactComponent implements OnInit {
       this.contactService.findContactById(this.license).subscribe((contact: Filling) => {
         this.contact = contact;
 
-        this.firstName = this.contact.firstName;
-        this.lastName = this.contact.lastName;
-        this.phoneNumber = this.contact.phoneNumber;
-        this.streetAddress = this.contact.streetAddress;
-        this.city = this.contact.city;
+        this.firstName = this.contact.car;
+        this.lastName = this.contact.date;
+        this.phoneNumber = this.contact.amount;
+        this.streetAddress = this.contact.price;
+        this.city = this.contact.mileage;
       });
     }
     this.refreshMapFrame();

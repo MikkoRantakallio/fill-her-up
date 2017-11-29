@@ -62,9 +62,13 @@ export class AppComponent {
 
   getFillings() {
 
-    console.log(this.selectedCar);
-    console.log(this.selectedPeriod);
+    if (this.selectedCar && this.selectedPeriod) {
 
-    this.router.navigate(['fillings', this.selectedCar, this.selectedPeriod]);
+      console.log(this.selectedCar);
+      console.log(this.selectedPeriod);
+
+      this.router.navigate(['fillings', this.selectedCar, this.selectedPeriod]);
+
+    }
   }
 }

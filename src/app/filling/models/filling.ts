@@ -1,18 +1,18 @@
 export class Filling {
 
   id: number;
-  firstName: string;
-  lastName: string;
-  phoneNumber: string;
-  streetAddress: string;
-  city: string;
+  car: string;
+  date: string;
+  amount: string;
+  price: string;
+  mileage: string;
 
-  constructor(id?: number, fName?: string, lName?: string, pNumber?: string, sAddress?: string, city?: string) {
+  constructor(id?: number, car?: string, date?: string, amount?: string, price?: string, mileage?: string) {
     this.id = id;
-    this.firstName = fName;
-    this.lastName = lName;
-    this.phoneNumber = pNumber;
-    this.streetAddress = sAddress;
-    this.city = city;
+    this.car = car;
+    this.date = date;
+    this.amount = amount;
+    this.price = price;
+    this.mileage = mileage;
   }
 }

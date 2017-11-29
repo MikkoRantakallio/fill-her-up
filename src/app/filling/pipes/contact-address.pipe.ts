@@ -9,7 +9,7 @@ export class ContactAddressPipe implements PipeTransform {
 
   transform(contact: Filling, args?: any): any {
 
-    let addressParts = [contact.streetAddress || null, contact.city || null];
+    let addressParts = [contact.price || null, contact.mileage || null];
     addressParts = _.reject(addressParts, _.isNull);
 
     return addressParts.join(', ') || 'no address';

@@ -1,6 +1,6 @@
 import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {Filling} from '../models/filling';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {FillingService} from '../services/filling.service';
 
 @Component({
@@ -24,15 +24,33 @@ export class FillingListComponent implements OnInit {
 
   ngOnInit() {
 
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+
+    this.router.events.subscribe((evt) => {
+      if (evt instanceof NavigationEnd) {
+        this.router.navigated = false;
+        window.scrollTo(0, 0);
+      }
+    });
+
     this.license = this.route.snapshot.paramMap.get('id');
     console.log(this.license);
     this.period = this.route.snapshot.paramMap.get('period');
     console.log(this.period);
 
-    if (this.license != null && this.period != null) {
+    if (this.license && this.period) {
 
       this.fillingService.findFillings(this.license).subscribe((fillings: Filling[]) => {
         this.fillings = fillings;
+
+        if (this.fillings.length === 0) {
+
+          var fill: Filling;
+          fill = new Filling(0, '', 'No data', '', '', '');
+          this.fillings.push(fill);
+        }
       });
     }
   }
@@ -45,6 +63,5 @@ export class FillingListComponent implements OnInit {
   showAddFilling() {
     this.router.navigate(['/add-filling']);
   }
-
 
 }
