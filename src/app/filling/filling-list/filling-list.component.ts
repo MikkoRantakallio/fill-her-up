@@ -2,6 +2,7 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {Filling} from '../models/filling';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {FillingService} from '../services/filling.service';
+import {Info} from '../models/info';
 
 @Component({
   selector: 'ca-filling-list',
@@ -15,8 +16,9 @@ export class FillingListComponent implements OnInit {
 
   fillings: Filling[];
   filling: Filling;
+  info: Info;
 
-  @Output() fillingSelected: EventEmitter<Filling>;
+  @Output() calculatedInfo: EventEmitter<Info>;
 
   constructor(private fillingService: FillingService, private router: Router, private route: ActivatedRoute) {
     this.fillings = [];
@@ -51,17 +53,25 @@ export class FillingListComponent implements OnInit {
           fill = new Filling(0, '', 'No data', '', '', '');
           this.fillings.push(fill);
         }
+
+        this.calculateStatistics();
       });
     }
   }
 
   onFillingSelect(filling: Filling) {
     console.log(filling);
-    this.router.navigate(['fillings', filling.id]);
+//    this.router.navigate(['fillings', filling.id]);
   }
 
   showAddFilling() {
     this.router.navigate(['/add-filling']);
   }
 
+  calculateStatistics() {
+
+    this.info = new Info();
+    this.info.averageConsumption = 9;
+    this.info.distance = 500;
+  }
 }

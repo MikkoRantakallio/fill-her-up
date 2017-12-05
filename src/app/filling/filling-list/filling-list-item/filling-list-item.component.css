@@ -1,15 +1,17 @@
 .ca-contact-list-card{
   margin: 12px;
+  padding: 4px;
+  padding-right: 10px;
   }
 
 .ca-contact-list-card-title{
   font-family: "Palatino Linotype", serif;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .ca-contact-list-card-icon{
-  font-size: 50px;
-  width: 50px;
-  height: 50px;
+  font-size: 30px;
+  width: 40px;
+  height: 40px;
   margin-right: 12px;
 }

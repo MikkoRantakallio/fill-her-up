@@ -51,9 +51,33 @@
   </div>
 </mat-card>
 
+<div fxLayout="row">
 
-<div>
-  <router-outlet></router-outlet>
+  <div>
+
+    <mat-card class="info-card">
+      <div fxLayout="row">
+
+        <div fxLayout="column" fxLayoutAlign="center center">
+          <mat-icon aria-label="Icon" class="car-icon">explore</mat-icon>
+        </div>
+
+          <div fxLayout="column">
+
+            <div>{{selectedCar}} </div>
+            <div>Average consumption for selected period = {{info.averageConsumption}} </div>
+            <div>Driven distance during selected period = {{info.distance}} </div>
+          </div>
+
+      </div>
+    </mat-card>
+
+
+  </div>
+
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+
 </div>
-
 

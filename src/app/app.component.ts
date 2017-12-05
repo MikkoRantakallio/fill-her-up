@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {FillingHttpService} from './filling/services/filling-http.service';
 import {Car} from './filling/models/car';
 import {Period} from './filling/models/period';
+import {Info} from './filling/models/info';
 
 @Component({
   selector: 'ca-root',
@@ -22,10 +23,13 @@ export class AppComponent {
   periods: Period[];
   period: Period;
 
+  info: Info;
+
   monthDesc = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
   constructor(private router: Router, private fillingHttpService: FillingHttpService) {
 
+    this.info = new Info(1233, 10.5);
   }
 
   ngOnInit() {
@@ -69,6 +73,8 @@ export class AppComponent {
 
       this.router.navigate(['fillings', this.selectedCar, this.selectedPeriod]);
 
+
+      this.info = new Info(1233, 10.5);
     }
   }
 }
