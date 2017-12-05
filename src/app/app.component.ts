@@ -29,7 +29,7 @@ export class AppComponent {
 
   constructor(private router: Router, private fillingHttpService: FillingHttpService) {
 
-    this.info = new Info(1233, 10.5);
+    this.info = new Info(1000, 9);
   }
 
   ngOnInit() {
