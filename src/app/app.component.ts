@@ -4,6 +4,7 @@ import {FillingHttpService} from './filling/services/filling-http.service';
 import {Car} from './filling/models/car';
 import {Period} from './filling/models/period';
 import {Info} from './filling/models/info';
+import {FillingService} from './filling/services/filling.service';
 
 @Component({
   selector: 'ca-root',
@@ -27,9 +28,9 @@ export class AppComponent {
 
   monthDesc = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
-  constructor(private router: Router, private fillingHttpService: FillingHttpService) {
+  constructor(private router: Router, private fillingHttpService: FillingHttpService, private fillingService: FillingService) {
 
-    this.info = new Info(1000, 9);
+//    this.info = new Info(1000, 9);
   }
 
   ngOnInit() {
@@ -50,18 +51,19 @@ export class AppComponent {
 
     for (var i = 12; i > 1; i--) {
 
-      var text = this.monthDesc[month - 1] + '-' + year;
-      var value = year + '-' + month;
+      var text = this.monthDesc[month] + '-' + year;
+      var value = year + '-' + (month + 1);
 
       this.period = new Period(value, text);
       this.periods.push(this.period);
 
       month--;
-      if (month < 1) {
-        month = 12;
+      if (month < 0) {
+        month = 11;
         year--;
       }
     }
+    this.info = this.fillingService.getStats();
   }
 
   getFillings() {
@@ -73,8 +75,13 @@ export class AppComponent {
 
       this.router.navigate(['fillings', this.selectedCar, this.selectedPeriod]);
 
-
-      this.info = new Info(1233, 10.5);
+      this.info = this.fillingService.getStats();
     }
+  }
+
+  clear() {
+    this.info.clear();
+    this.selectedCar = null;
+    this.selectedPeriod = null;
   }
 }

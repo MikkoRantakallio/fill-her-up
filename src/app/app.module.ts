@@ -21,6 +21,10 @@ import {HttpClientModule} from '@angular/common/http';
 
 const routes: Routes = [
   {
+    path: '',
+    component: FillingListComponent
+  },
+  {
     path: 'add-filling',
     component: AddContactComponent
   },

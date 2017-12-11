@@ -24,9 +24,9 @@ export class FillingHttpService {
     });
   }
 
-  get(id:string): Observable<Filling[]> {
+  get(id: string, start: string, end: string): Observable<Filling[]> {
 
-    var getUrl = this.url + 'get_fillings_with_ids&id=' + id;
+    var getUrl = this.url + 'get_fillings_period&id=' + id + '&start=' + start + '&end=' + end;
 
     return this.http.get(getUrl).map((response) => {
       return response as Filling[];

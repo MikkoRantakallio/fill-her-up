@@ -1,4 +1,4 @@
-import {Component, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Input} from '@angular/core';
 import {Filling} from '../models/filling';
 import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {FillingService} from '../services/filling.service';
@@ -18,10 +18,18 @@ export class FillingListComponent implements OnInit {
   filling: Filling;
   info: Info;
 
-  @Output() calculatedInfo: EventEmitter<Info>;
+  //@Output() calculatedInfo: EventEmitter<Info>;
 
+//  @Output() calculatedInfo = new EventEmitter();
+/*
+  @Input()
+  get calcInfo() {
+    return this.info;
+  }
+*/
   constructor(private fillingService: FillingService, private router: Router, private route: ActivatedRoute) {
     this.fillings = [];
+//    this.calculatedInfo = new EventEmitter();
   }
 
   ngOnInit() {
@@ -44,7 +52,20 @@ export class FillingListComponent implements OnInit {
 
     if (this.license && this.period) {
 
-      this.fillingService.findFillings(this.license).subscribe((fillings: Filling[]) => {
+      var startD: string;
+      var endD: string;
+
+      if (this.period !== 'All') {
+
+        startD = this.period + '-01';
+        endD = this.period + '-30';
+      }
+      else{
+        startD = 'All';
+        endD = 'All';
+      }
+
+      this.fillingService.findFillings(this.license, startD, endD).subscribe((fillings: Filling[]) => {
         this.fillings = fillings;
 
         if (this.fillings.length === 0) {
@@ -54,9 +75,13 @@ export class FillingListComponent implements OnInit {
           this.fillings.push(fill);
         }
 
-        this.calculateStatistics();
+        this.fillingService.calculateStats(this.fillings, this.period);
       });
     }
+    else {
+      this.info = null;
+    }
+//    this.calculatedInfo.emit(this.info);
   }
 
   onFillingSelect(filling: Filling) {
@@ -66,12 +91,5 @@ export class FillingListComponent implements OnInit {
 
   showAddFilling() {
     this.router.navigate(['/add-filling']);
-  }
-
-  calculateStatistics() {
-
-    this.info = new Info();
-    this.info.averageConsumption = 9;
-    this.info.distance = 500;
   }
 }

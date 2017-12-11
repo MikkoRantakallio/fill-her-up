@@ -1,6 +1,6 @@
 <mat-toolbar color="primary">
 
-  <button mat-icon-button color="white" [routerLink]="['']">
+  <button mat-icon-button color="white" [routerLink]="['']" (click)="clear()">
     <mat-icon>menu</mat-icon>
   </button>
 
@@ -64,9 +64,10 @@
 
           <div fxLayout="column">
 
-            <div>{{selectedCar}} </div>
+            <div>{{selectedCar}} </div><br>
             <div>Average consumption for selected period = {{info.averageConsumption}} </div>
             <div>Driven distance during selected period = {{info.distance}} </div>
+            <div>Average distance per day = {{info.averageKmPerDay}} </div>
           </div>
 
       </div>
