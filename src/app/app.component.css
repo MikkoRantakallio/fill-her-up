@@ -35,3 +35,13 @@
   height: 50px;
   margin-right: 12px;
 }
+
+.small-icon{
+  font-size: 30px;
+  height: 50px;
+}
+
+.licenseHeader{
+  font-family: "Palatino Linotype", serif;
+  font-size: 30px;
+}

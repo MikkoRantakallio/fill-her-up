@@ -58,17 +58,40 @@
     <mat-card class="info-card">
       <div fxLayout="row">
 
-        <div fxLayout="column" fxLayoutAlign="center center">
-          <mat-icon aria-label="Icon" class="car-icon">explore</mat-icon>
-        </div>
-
-          <div fxLayout="column">
-
-            <div>{{selectedCar}} </div><br>
-            <div>Average consumption for selected period = {{info.averageConsumption}} </div>
-            <div>Driven distance during selected period = {{info.distance}} </div>
-            <div>Average distance per day = {{info.averageKmPerDay}} </div>
+        <div fxLayout="column">
+          <div class="licenseHeader">{{selectedCar}}</div>
+          <br>
+          <div>
+            <mat-icon aria-label="Icon" class="small-icon">format_color_fill</mat-icon>
+            Average consumption = {{info.averageConsumption}} l/100 km
           </div>
+          <div>
+            <mat-icon aria-label="Icon" class="small-icon">directions_car</mat-icon>
+            <mat-icon aria-label="Icon" class="small-icon">arrow_forward</mat-icon>
+            Driven distance = {{info.distance}} km
+          </div>
+          <div>
+            <mat-icon aria-label="Icon" class="small-icon">today</mat-icon>
+            <mat-icon aria-label="Icon" class="small-icon">arrow_forward</mat-icon>
+            Average distance per day = {{info.averageKmPerDay}} km
+          </div>
+          <div>
+            <mat-icon aria-label="Icon" class="small-icon">euro_symbol</mat-icon>
+            Highest fuel price = {{info.highestPricePerLiter}} eur
+          </div>
+          <div>
+            <mat-icon aria-label="Icon" class="small-icon">euro_symbol</mat-icon>
+            Lowest fuel price = {{info.lowestPricePerLiter}} eur
+          </div>
+          <div>
+            <mat-icon aria-label="Icon" class="small-icon">local_gas_station</mat-icon>
+            Total fuel bought = {{info.totalFuelBought}} litres
+          </div>
+          <div>
+            <mat-icon aria-label="Icon" class="small-icon">euro_symbol</mat-icon>
+            Total money spent = {{info.totalMoneyUsed}} eur
+          </div>
+        </div>
 
       </div>
     </mat-card>
