@@ -18,18 +18,8 @@ export class FillingListComponent implements OnInit {
   filling: Filling;
   info: Info;
 
-  //@Output() calculatedInfo: EventEmitter<Info>;
-
-//  @Output() calculatedInfo = new EventEmitter();
-/*
-  @Input()
-  get calcInfo() {
-    return this.info;
-  }
-*/
   constructor(private fillingService: FillingService, private router: Router, private route: ActivatedRoute) {
     this.fillings = [];
-//    this.calculatedInfo = new EventEmitter();
   }
 
   ngOnInit() {
@@ -55,12 +45,12 @@ export class FillingListComponent implements OnInit {
       var startD: string;
       var endD: string;
 
-      if (this.period !== 'All') {
+      if (this.period.substr(0, 3) !== 'All') {
 
-        startD = this.period + '-01';
-        endD = this.period + '-30';
+        startD = this.period.substr(0, 7) + '-01';
+        endD = this.period.substr(8) + '-30';
       }
-      else{
+      else {
         startD = 'All';
         endD = 'All';
       }
@@ -81,12 +71,10 @@ export class FillingListComponent implements OnInit {
     else {
       this.info = null;
     }
-//    this.calculatedInfo.emit(this.info);
   }
 
   onFillingSelect(filling: Filling) {
     console.log(filling);
-//    this.router.navigate(['fillings', filling.id]);
   }
 
   showAddFilling() {

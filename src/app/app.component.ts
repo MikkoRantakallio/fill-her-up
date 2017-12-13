@@ -81,12 +81,16 @@ export class AppComponent {
 
   getFillings() {
 
-    if (this.selectedCar && (this.selectedStartMonth < this.selectedEndMonth || this.selectedStartMonth === 'All')) {
+    if (this.selectedCar && (this.selectedStartMonth <= this.selectedEndMonth || this.selectedStartMonth === 'All')) {
 
       console.log(this.selectedCar);
       console.log(this.selectedStartMonth);
 
-      this.router.navigate(['fillings', this.selectedCar, this.selectedStartMonth]);
+      if (this.selectedStartMonth === 'All') {
+        this.selectedEndMonth = null;
+      }
+
+      this.router.navigate(['fillings', this.selectedCar, this.selectedStartMonth + '-' + this.selectedEndMonth]);
 
       this.info = this.fillingService.getStats();
     }
