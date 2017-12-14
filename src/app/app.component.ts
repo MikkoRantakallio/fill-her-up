@@ -18,6 +18,7 @@ export class AppComponent {
   selectedCar: string;
   selectedStartMonth: string;
   selectedEndMonth: string;
+  endMonthDisabled: boolean;
 
   cars: Car[];
   car: Car;
@@ -32,15 +33,61 @@ export class AppComponent {
 
   monthDesc = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
+// ==========================================
   constructor(private router: Router, private fillingHttpService: FillingHttpService, private fillingService: FillingService) {
 
   }
 
+// ==========================================
   ngOnInit() {
 
     this.fillingHttpService.getCars().subscribe((cars: Car[]) => {
       this.cars = cars
     });
+
+    this.endMonthDisabled = false;
+
+    this.setMonthValues();
+
+    /*    this.startMonths = new Array<Period>();
+        this.endMonths = new Array<Period>();
+
+        this.period = new Period('All', 'All');
+        this.startMonths.push(this.period);
+
+        var date = new Date();
+
+        var month = date.getMonth();
+        var year = date.getFullYear();
+
+        for (var i = 12; i > 1; i--) {
+
+          var text = this.monthDesc[month] + '-' + year;
+
+          var value = year + '-';
+
+          if (month + 1 < 10) {
+            value = value + '0' + (month + 1);
+
+          } else {
+            value = value + (month + 1);
+          }
+
+          this.period = new Period(value, text);
+          this.startMonths.push(this.period);
+          this.endMonths.push(this.period);
+
+          month--;
+          if (month < 0) {
+            month = 11;
+            year--;
+          }
+        }*/
+    this.info = this.fillingService.getStats();
+  }
+
+// ==========================================
+  setMonthValues() {
 
     this.startMonths = new Array<Period>();
     this.endMonths = new Array<Period>();
@@ -76,9 +123,9 @@ export class AppComponent {
         year--;
       }
     }
-    this.info = this.fillingService.getStats();
   }
 
+// ==========================================
   getFillings() {
 
     if (this.selectedCar && (this.selectedStartMonth <= this.selectedEndMonth || this.selectedStartMonth === 'All')) {
@@ -96,10 +143,38 @@ export class AppComponent {
     }
   }
 
+// ==========================================
   clear() {
     this.info.clear();
     this.selectedCar = null;
     this.selectedStartMonth = null;
     this.selectedEndMonth = null;
+  }
+
+// ==========================================
+  onStartMonthChange(value) {
+
+    if (value === "All") {
+
+      this.endMonthDisabled = true;
+      this.selectedEndMonth = null;
+
+    }
+    else {
+
+// Restore month values first
+      this.setMonthValues();
+
+      var i: number;
+      i = this.endMonths.length - 1;
+
+// Remove end month values earlier than start month
+      while (this.endMonths[i].value !== value) {
+        i--;
+      }
+      this.endMonths.splice(i + 1, this.endMonths.length - i);
+
+      this.endMonthDisabled = false;
+    }
   }
 }

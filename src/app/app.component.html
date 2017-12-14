@@ -32,7 +32,7 @@
 
       <mat-form-field class="periodSelect">
 
-        <mat-select placeholder="Select start month" [(ngModel)]="selectedStartMonth">
+        <mat-select placeholder="Select start month" [(ngModel)]="selectedStartMonth" (ngModelChange)="onStartMonthChange($event)">
           <mat-option *ngFor="let period of startMonths" [value]="period.value">
             {{ period.text }}
           </mat-option>
@@ -43,7 +43,7 @@
 
       <mat-form-field class="periodSelect">
 
-        <mat-select placeholder="Select end month" [(ngModel)]="selectedEndMonth">
+        <mat-select placeholder="Select end month" [(ngModel)]="selectedEndMonth" [disabled]="endMonthDisabled">
           <mat-option *ngFor="let period of endMonths" [value]="period.value">
             {{ period.text }}
           </mat-option>
@@ -68,20 +68,20 @@
   <div>
 
     <div fxLayout="column">
-
+<!--
       <mat-card class="info-card">
         <div fxLayout="row" fxLayoutAlign="center center">
           <div class="licenseHeader">{{selectedCar}}</div>
         </div>
       </mat-card>
-
+-->
       <mat-card class="info-card">
         <div fxLayout="row" fxLayoutAlign="left center">
           <div>
             <mat-icon aria-label="Icon" class="small-icon single-icon">format_color_fill</mat-icon>
           </div>
-          <div>Average consumption =</div>
-          <div fxFlex class="right"> {{info.averageConsumption}} l/100 km</div>
+          <div>Avg consumption (l/100 km) </div>
+          <div fxFlex class="right"> {{  info.averageConsumption}}</div>
         </div>
 
         <div fxLayout="row" fxLayoutAlign="left center">
@@ -89,8 +89,8 @@
             <mat-icon aria-label="Icon" class="small-icon">directions_car</mat-icon>
             <mat-icon aria-label="Icon" class="small-icon">arrow_forward</mat-icon>
           </div>
-          <div>Driven distance =</div>
-          <div fxFlex class="right"> {{info.distance}} km</div>
+          <div>Driven distance (km)</div>
+          <div fxFlex class="right"> {{info.distance}}</div>
         </div>
 
         <div fxLayout="row" fxLayoutAlign="left center">
@@ -98,40 +98,40 @@
             <mat-icon aria-label="Icon" class="small-icon">today</mat-icon>
             <mat-icon aria-label="Icon" class="small-icon">arrow_forward</mat-icon>
           </div>
-          <div>Average distance per day =</div>
-          <div fxFlex class="right"> {{info.averageKmPerDay}} km</div>
+          <div>Avg distance per day (km)</div>
+          <div fxFlex class="right"> {{info.averageKmPerDay}}</div>
         </div>
 
         <div fxLayout="row" fxLayoutAlign="left center">
           <div>
             <mat-icon aria-label="Icon" class="small-icon single-icon">euro_symbol</mat-icon>
           </div>
-          <div>Highest fuel price =</div>
-          <div fxFlex class="right"> {{info.highestPricePerLiter}} eur</div>
+          <div>Highest fuel price (eur/l)</div>
+          <div fxFlex class="right"> {{info.highestPricePerLiter}}</div>
         </div>
 
         <div fxLayout="row" fxLayoutAlign="left center">
           <div>
             <mat-icon aria-label="Icon" class="small-icon single-icon">euro_symbol</mat-icon>
           </div>
-          <div>Lowest fuel price =</div>
-          <div fxFlex class="right"> {{info.lowestPricePerLiter}} eur</div>
+          <div>Lowest fuel price (eur/l)</div>
+          <div fxFlex class="right"> {{info.lowestPricePerLiter}}</div>
         </div>
 
         <div fxLayout="row" fxLayoutAlign="left center">
           <div>
             <mat-icon aria-label="Icon" class="small-icon single-icon">local_gas_station</mat-icon>
           </div>
-          <div>Total amout fuel used =</div>
-          <div fxFlex class="right"> {{info.totalFuelBought}} litres</div>
+          <div>Total amout fuel used (l)</div>
+          <div fxFlex class="right"> {{info.totalFuelBought}}</div>
         </div>
 
         <div fxLayout="row" fxLayoutAlign="left center">
           <div>
             <mat-icon aria-label="Icon" class="small-icon single-icon">euro_symbol</mat-icon>
           </div>
-          <div>Total money spent =</div>
-          <div fxFlex class="right"> {{ info.totalMoneyUsed}} eur</div>
+          <div>Total money spent (eur)</div>
+          <div fxFlex class="right"> {{ info.totalMoneyUsed}}</div>
         </div>
       </mat-card>
 
